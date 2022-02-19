@@ -1,38 +1,167 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.checkbox {
+  opacity: 0;
+  position: absolute;
 }
 
-@keyframes App-logo-spin {
+.label {
+  width: 45px;
+  height: 15px;
+
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball {
+  transform: translateX(30px);
+}
+
+.moon {
+  color: #111;
+}
+
+.sun {
+  color: yellow;
+}
+
+.card {
+  min-width: 40vw;
+  background: linear-gradient(to right, #b8e6ec, #f3d0ee);
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+  border: none;
+  animation: 1s cubic-bezier(0.16, 1, 0.3, 1) cardEnter;
+  margin: 3rem 0 3rem 0;
+}
+.cardDark {
+  min-width: 40vw;
+  background: linear-gradient(to right, #335254, #442b49);
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+  border: none;
+  animation: 1s cubic-bezier(0.16, 1, 0.3, 1) cardEnter;
+  margin: 3rem 0 3rem 0;
+}
+.card__row__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card__row__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.card__title {
+  font-weight: 600;
+  font-size: 2rem;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card__col {
+  display: flex;
+  justify-content: center;
+}
+.card__col__center {
+  display: flex;
+  justify-content: center;
+}
+.card__col__center .card__input {
+  font-size: 1.7rem;
+  width: 77%;
+}
+.card__col__bottom {
+  display: flex;
+  justify-content: flex-end;
+}
+.card__col__bottom .card__input {
+  font-size: 1rem;
+  width: 15%;
+  margin-left: 0.5rem;
+}
+.card__input {
+  background: none;
+  border: none;
+  border-bottom: dashed 0.2rem #434343;
+  font-size: 1.2rem;
+  color: #434343;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.card__input--large {
+  font-size: 2rem;
+}
+
+.card__input::placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  text-shadow: none;
+  text-align: center;
+}
+
+.card__input:focus {
+  outline: none;
+  border-color: rgba(0, 0, 0, 0.6);
+}
+
+.card__label {
+  display: block;
+  font-weight: 400;
+  width: 50px;
+}
+
+.card__chip img {
+  width: 3rem;
+}
+
+.card__brand {
+  font-size: 3rem;
+  color: #fff;
+  min-width: 3rem;
+  min-height: 75px;
+}
+.validateBtn {
+  min-width: 47vw;
+  height: 66px;
+  border-radius: 26px;
+  font-size: 1.3rem;
+  color: #434343;
+  font-weight: 400;
+  border: none;
+  outline: none;
+}
+@keyframes cardEnter {
   from {
-    transform: rotate(0deg);
+    transform: translateY(-100vh);
+    opacity: 0.1;
   }
   to {
-    transform: rotate(360deg);
+    transform: translateY(0);
+    opacity: 1;
   }
 }
